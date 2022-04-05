@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Counter</title>
+    <!-- Css -->
+    <style>
+        body {
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            background: #C1F4C5;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            width: 75%;
+            background-color: #139487;
+            padding: 20px;
+            text-align: center;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: rgb(255, 255, 255);
+        }
+
+        .text-div {
+            width: 75%;
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        .text-div textarea {
+            width: 100%;
+            padding: 20px;
+            border: none;
+            font-size: 1.4rem;
+            resize: none;
+        }
+
+        .text-div p {
+            width: 100%;
+            background-color: #139487;
+            padding: 20px;
+            text-align: center;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: rgb(255, 255, 255);
+            font-size: 1.4rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Word Counter</h1>
+        <div class="text-div">
+            <textarea name="Textarea" id="textArea" cols="30" rows="10"></textarea>
+            <p>
+                <span id="word">0</span> words
+                <span id="char">0</span> characters
+            </p>
+        </div>
+    </div>
+
+
+    <!-- Js Script  -->
+    <script>
+        // get text area
+        let textBox = document.getElementById("textArea");
+        textBox.addEventListener('input', function () {
+            var text = this.value; //textarea input value store
+            let char = text.length; //charachter counter
+            document.getElementById("char").innerHTML = char;
+            text = text.trim(); //remove space before and after from string
+            let word = text.split(" "); //conver a string into array element after every space between words.
+            let cleanList = word.filter(function (elm) {
+                return elm != "";
+            });
+            document.getElementById("word").innerHTML = cleanList.length;
+        });
+
+    </script>
+</body>
+
+</html>
